@@ -10,12 +10,11 @@ const SpinWheel = ({ data, mustSpin, prizeIndex, onStopSpinning }) => {
   const canvasRef = useRef(null);
   const rotationAngle = useRef(0);
   const animationFrame = useRef(null);
-  const imagesRef = useRef({});
   const [imagesLoaded, setImagesLoaded] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
   const sectorAngle = (2 * Math.PI) / data.length;
 
-  // Draw the wheel + hand
+  // Draw the wheel – only gift emoji, no real images or names
   const draw = () => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -28,10 +27,11 @@ const SpinWheel = ({ data, mustSpin, prizeIndex, onStopSpinning }) => {
 
     ctx.clearRect(0, 0, cw, ch);
 
-    // sectors
+    // Draw coloured sectors
     for (let i = 0; i < data.length; i++) {
       const start = i * sectorAngle;
       const end = start + sectorAngle;
+
       ctx.beginPath();
       ctx.moveTo(cx, cy);
       ctx.arc(cx, cy, radius, start, end);
@@ -40,29 +40,18 @@ const SpinWheel = ({ data, mustSpin, prizeIndex, onStopSpinning }) => {
       ctx.fill();
       ctx.stroke();
 
-      // name
+      // Draw gift emoji in the middle of the sector
       ctx.save();
       ctx.translate(cx, cy);
       ctx.rotate(start + sectorAngle / 2);
-      ctx.textAlign = 'right';
-      ctx.fillStyle = '#000';
-      ctx.font = 'bold 12px Arial';
-      ctx.fillText(data[i].option, radius - 15, 5);
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.font = '32px "Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji", sans-serif';
+      ctx.fillText('🎁', radius * 0.65, 0);   // place emoji at ~65% of radius
       ctx.restore();
-
-      // image
-      const img = imagesRef.current[data[i].image];
-      if (img) {
-        ctx.save();
-        ctx.translate(cx, cy);
-        ctx.rotate(start + sectorAngle / 2);
-        const imgSize = Math.min(sectorAngle * radius * 0.4, 35);
-        ctx.drawImage(img, radius * 0.4, -imgSize / 2, imgSize, imgSize);
-        ctx.restore();
-      }
     }
 
-    // rotating hand
+    // Draw the rotating hand (pointer)
     ctx.save();
     ctx.translate(cx, cy);
     ctx.rotate(rotationAngle.current);
@@ -76,49 +65,34 @@ const SpinWheel = ({ data, mustSpin, prizeIndex, onStopSpinning }) => {
     ctx.strokeStyle = '#000';
     ctx.lineWidth = 2;
     ctx.stroke();
-    // centre circle
+
+    // Centre circle
     ctx.beginPath();
     ctx.arc(0, 0, 8, 0, 2 * Math.PI);
     ctx.fillStyle = '#fff';
     ctx.fill();
     ctx.stroke();
+
     ctx.restore();
   };
 
-  // Preload images
-  useEffect(() => {
-    const load = async () => {
-      const promises = data.map((item) => {
-        return new Promise((resolve) => {
-          const img = new Image();
-          img.crossOrigin = 'anonymous';
-          img.onload = () => {
-            imagesRef.current[item.image] = img;
-            resolve();
-          };
-          img.onerror = () => resolve();
-          img.src = item.image;
-        });
-      });
-      await Promise.all(promises);
-      setImagesLoaded(true);
-    };
-    load();
-  }, [data]);
-
-  // Draw whenever images loaded or data changes
+  // Initial draw when data changes
   useEffect(() => {
     draw();
     // eslint-disable-next-line
-  }, [imagesLoaded, data]);
+  }, [data, imagesLoaded]);
 
-  // Spin animation effect
+  // Set imagesLoaded to true (we don’t need to preload images anymore)
+  useEffect(() => {
+    setImagesLoaded(true);
+  }, []);
+
+  // Spin animation
   useEffect(() => {
     if (!mustSpin || isAnimating || data.length === 0 || prizeIndex === null) return;
 
     setIsAnimating(true);
 
-    // Calculate final angle so that the hand points to the winning sector
     const targetSectorMid = prizeIndex * sectorAngle + sectorAngle / 2;
     const randomOffset = (Math.random() - 0.5) * sectorAngle * 0.7;
     const totalTarget = targetSectorMid + randomOffset;
@@ -126,21 +100,20 @@ const SpinWheel = ({ data, mustSpin, prizeIndex, onStopSpinning }) => {
     const startAngle = rotationAngle.current;
     const targetAngle = startAngle + fullSpins + totalTarget;
 
-    const duration = 4000; // ms
+    const duration = 4000;
     let startTime = null;
 
     const animate = (timestamp) => {
       if (!startTime) startTime = timestamp;
       const elapsed = timestamp - startTime;
       const progress = Math.min(elapsed / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3); // ease out
+      const eased = 1 - Math.pow(1 - progress, 3);
       rotationAngle.current = startAngle + (targetAngle - startAngle) * eased;
       draw();
 
       if (progress < 1) {
         animationFrame.current = requestAnimationFrame(animate);
       } else {
-        // spin finished
         setIsAnimating(false);
         if (onStopSpinning) onStopSpinning();
       }
