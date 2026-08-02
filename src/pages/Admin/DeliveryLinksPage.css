@@ -1,0 +1,57 @@
+.delivery-links-page {
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 16px;
+  padding: 2rem;
+  max-width: 600px;
+}
+
+.delivery-links-page h3 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #ffd200;
+  margin-bottom: 1.5rem;
+}
+
+.links-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.links-form label {
+  display: flex;
+  flex-direction: column;
+  color: #ccc;
+  gap: 0.4rem;
+  font-weight: 500;
+}
+
+.links-form input {
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  font-size: 1rem;
+}
+
+.links-form input:focus {
+  outline: none;
+  border-color: #f7971e;
+}
+
+.links-form button {
+  padding: 0.8rem;
+  background: linear-gradient(135deg, #f7971e, #ffd200);
+  border: none;
+  border-radius: 10px;
+  font-weight: 700;
+  color: #1a1a2e;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.saved-msg {
+  color: #4caf50;
+  font-weight: 600;
+}

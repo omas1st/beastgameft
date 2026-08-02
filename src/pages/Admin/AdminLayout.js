@@ -22,6 +22,12 @@ const AdminLayout = () => {
           >
             Prizes (Gifts)
           </Link>
+          <Link
+            to="/admin/deliverylinks"
+            className={location.pathname.includes('/admin/deliverylinks') ? 'active' : ''}
+          >
+            Delivery Links
+          </Link>
         </nav>
       </header>
       <main className="admin-main">

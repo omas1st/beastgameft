@@ -20,3 +20,6 @@ export const fetchAdminGifts = () => API.get('/admin/gifts');
 export const addGift = (formData) => API.post('/admin/gifts', formData); // multipart
 export const updateGift = (id, formData) => API.put(`/admin/gifts/${id}`, formData);
 export const deleteGift = (id) => API.delete(`/admin/gifts/${id}`);
+
+export const fetchSettings = () => API.get('/settings');
+export const updateSettings = (data) => API.put('/admin/settings', data);

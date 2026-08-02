@@ -8,6 +8,7 @@ import BringPackagePage from './pages/BringPackagePage/BringPackagePage';
 import AdminLayout from './pages/Admin/AdminLayout';
 import DataPage from './pages/Admin/DataPage';
 import GameDataPage from './pages/Admin/GameDataPage';
+import DeliveryLinksPage from './pages/Admin/DeliveryLinksPage';
 import './App.css';
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
           <Route index element={<Navigate to="data" replace />} />
           <Route path="data" element={<DataPage />} />
           <Route path="gamedata" element={<GameDataPage />} />
+          <Route path="deliverylinks" element={<DeliveryLinksPage />} />
         </Route>
       </Routes>
     </Router>
