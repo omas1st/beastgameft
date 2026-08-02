@@ -1,0 +1,87 @@
+.delivery-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  background: radial-gradient(circle at bottom left, #1a1a2e, #0f0f1a);
+  text-align: center;
+}
+
+.delivery-page h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  background: linear-gradient(to right, #f7971e, #ffd200);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1.5rem;
+}
+
+.delivery-page p {
+  margin: 0.5rem 0;
+  font-size: 1.1rem;
+  color: #ccc;
+}
+
+.prize-info {
+  margin: 1.5rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.prize-info img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  border-radius: 16px;
+  border: 2px solid rgba(247, 151, 30, 0.3);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.prize-info p {
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: #fff;
+}
+
+.message {
+  max-width: 600px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  margin: 1.5rem 0;
+  line-height: 1.6;
+}
+
+.bring-btn {
+  margin-top: 1rem;
+  padding: 1rem 3rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #f7971e, #ffd200);
+  color: #1a1a2e;
+  box-shadow: 0 0 20px rgba(247, 151, 30, 0.4);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.bring-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 30px rgba(247, 151, 30, 0.7);
+}
+
+@media (max-width: 480px) {
+  .delivery-page h2 {
+    font-size: 1.6rem;
+  }
+  .prize-info img {
+    width: 100px;
+    height: 100px;
+  }
+}

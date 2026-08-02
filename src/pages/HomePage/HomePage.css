@@ -1,0 +1,70 @@
+.homepage {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  background: radial-gradient(circle at top left, #1a1a2e, #0f0f1a);
+  text-align: center;
+}
+
+.section-1 h1 {
+  font-size: clamp(2.5rem, 10vw, 5rem);
+  font-weight: 800;
+  background: linear-gradient(135deg, #f7971e, #ffd200);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 2rem;
+  letter-spacing: 1px;
+}
+
+.section-2 .start-btn {
+  padding: 1rem 3rem;
+  font-size: 1.4rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #f7971e, #ffd200);
+  color: #1a1a2e;
+  box-shadow: 0 0 20px rgba(247, 151, 30, 0.4);
+  transition: transform 0.2s, box-shadow 0.2s;
+  margin-bottom: 2rem;
+}
+
+.section-2 .start-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 30px rgba(247, 151, 30, 0.7);
+}
+
+.section-3 {
+  max-width: 600px;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  color: #ccc;
+  line-height: 1.7;
+}
+
+/* Error message in popup */
+.error {
+  color: #ff6b6b;
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 480px) {
+  .section-3 {
+    font-size: 0.9rem;
+    padding: 1rem;
+  }
+  .section-2 .start-btn {
+    padding: 0.8rem 2rem;
+    font-size: 1.2rem;
+  }
+}

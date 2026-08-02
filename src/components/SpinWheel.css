@@ -1,0 +1,19 @@
+.wheel-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.wheel-container canvas {
+  filter: drop-shadow(0 0 15px rgba(247, 151, 30, 0.3));
+  transition: filter 0.3s;
+}
+
+@media (max-width: 480px) {
+  .wheel-container {
+    max-width: 320px;
+  }
+}

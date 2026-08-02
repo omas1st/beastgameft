@@ -1,0 +1,103 @@
+.bringpackage-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  background: radial-gradient(ellipse at top, #1a1a2e, #0f0f1a);
+  text-align: center;
+}
+
+.congrats h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  background: linear-gradient(to right, #f7971e, #ffd200);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 2rem;
+}
+
+.delivery-id-section {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+  width: 100%;
+  max-width: 400px;
+}
+
+.delivery-id-section p {
+  font-size: 1rem;
+  color: #aaa;
+  margin-bottom: 0.5rem;
+}
+
+.delivery-id-section h3 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #ffd200;
+  letter-spacing: 3px;
+  margin: 0.5rem 0 1rem;
+}
+
+.delivery-id-section button {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 0.5rem 1.5rem;
+  color: #fff;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.delivery-id-section button:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.warning {
+  background: rgba(255, 107, 107, 0.1);
+  border: 1px solid rgba(255, 107, 107, 0.3);
+  border-radius: 12px;
+  padding: 0.8rem 1.2rem;
+  max-width: 500px;
+  margin-bottom: 1.5rem;
+  color: #ff6b6b;
+  font-size: 0.95rem;
+}
+
+.instruction {
+  max-width: 500px;
+  color: #ccc;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.action .continue-btn {
+  padding: 1rem 3rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #f7971e, #ffd200);
+  color: #1a1a2e;
+  box-shadow: 0 0 20px rgba(247, 151, 30, 0.4);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.action .continue-btn:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 0 30px rgba(247, 151, 30, 0.7);
+}
+
+@media (max-width: 480px) {
+  .delivery-id-section h3 {
+    font-size: 2rem;
+  }
+  .congrats h2 {
+    font-size: 1.6rem;
+  }
+}

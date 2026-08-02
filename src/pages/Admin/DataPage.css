@@ -1,0 +1,98 @@
+.admin-data-page {
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 16px;
+  padding: 2rem;
+}
+
+.admin-data-page h3 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: #ffd200;
+}
+
+.create-area {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.create-area input {
+  flex: 1;
+  min-width: 200px;
+  padding: 0.7rem 1rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+}
+
+.create-area button {
+  padding: 0.7rem 1.5rem;
+  background: linear-gradient(135deg, #f7971e, #ffd200);
+  border: none;
+  border-radius: 10px;
+  font-weight: 700;
+  color: #1a1a2e;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow-x: auto;
+  display: block;
+}
+
+thead {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+th, td {
+  padding: 0.8rem;
+  text-align: left;
+  white-space: nowrap;
+}
+
+th {
+  font-weight: 600;
+  color: #ffd200;
+  font-size: 0.9rem;
+}
+
+td {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  color: #ccc;
+}
+
+td input {
+  width: 100%;
+  min-width: 80px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.4rem;
+  border-radius: 6px;
+  color: #fff;
+}
+
+td button {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  color: #fff;
+  margin-right: 0.5rem;
+}
+
+td button:hover {
+  background: rgba(247, 151, 30, 0.2);
+}
+
+@media (max-width: 768px) {
+  .admin-data-page {
+    padding: 1rem;
+  }
+  .create-area {
+    flex-direction: column;
+  }
+}

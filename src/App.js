@@ -1,24 +1,31 @@
-import logo from './logo.svg';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import HomePage from './pages/HomePage/HomePage';
+import SpinPage from './pages/SpinPage/SpinPage';
+import PutInfoPage from './pages/PutInfoPage/PutInfoPage';
+import DeliveryPage from './pages/DeliveryPage/DeliveryPage';
+import BringPackagePage from './pages/BringPackagePage/BringPackagePage';
+import AdminLayout from './pages/Admin/AdminLayout';
+import DataPage from './pages/Admin/DataPage';
+import GameDataPage from './pages/Admin/GameDataPage';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/spin" element={<SpinPage />} />
+        <Route path="/putinfo" element={<PutInfoPage />} />
+        <Route path="/delivery" element={<DeliveryPage />} />
+        <Route path="/bringpackage" element={<BringPackagePage />} />
+        <Route path="/admin" element={<AdminLayout />}>
+          <Route index element={<Navigate to="data" replace />} />
+          <Route path="data" element={<DataPage />} />
+          <Route path="gamedata" element={<GameDataPage />} />
+        </Route>
+      </Routes>
+    </Router>
   );
 }
 
